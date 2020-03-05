@@ -9,10 +9,8 @@ var LinkedList = function () {
       list.tail = Node(value);
     } else {
       list.head.next = Node(value)
-
       list.tail = Node(value)
     }
-
   };
 
   list.removeHead = function () {
@@ -22,10 +20,11 @@ var LinkedList = function () {
   };
 
   list.contains = function (target) {
-    while (list.head) {
-      if (list.head.value === target) return true;
+    var helper = list.head;
+    while (helper) {
+      if (helper.value === target) return true;
 
-      list.head = list.head.next;
+      helper = helper.next;
     }
 
     return false;

@@ -1,8 +1,8 @@
 var Tree = function (value) {
-  var newTree = Object.create(treeMethods);
-  newTree.value = value;
 
+  var newTree = Object.create(treeMethods);
   // your code here
+  newTree.value = value;
   newTree.children = [];  // fix me
   newTree.result = false;
 
@@ -16,23 +16,26 @@ treeMethods.addChild = function (value) {
 };
 
 treeMethods.contains = function (target) {
-  this.result = false;
+
+  if (this.value === target) {
+
+    return true;
+
+  }
+
   for (let i = 0; i < this.children.length; i++) {
-    const child = this.children[i];
-
-    console.log(target, child)
-
-    if (child.value === target) {
-      this.result = true;
-
-    }
+    let child = this.children[i]
+    // console.log(target, child)
     // console.log(this.result)
 
-    else {
-      treeMethods.contains(target)
+    if (child.contains(target)) {
+
+      return true;
     }
   }
-  console.log(this.result)
+
+
+  // console.log(this.result)
   return this.result;
 };
 
